@@ -20,7 +20,7 @@ logger.setLevel(logging.INFO)
 ##
 
 try:
-    sys.path.append("@PYTHON_INSTDIR@")
+    sys.path.insert(0,"@PYTHON_INSTDIR@")
     from morse.version import VERSION
     from morse.environments import Environment
     from morse.core.exceptions import MorseEnvironmentError
@@ -596,6 +596,10 @@ def launch_simulator(scene=None, script=None, node_name=None, geometry=None,
         env["PYTHONPATH"] = os.pathsep.join(tmp)
     else:
         env["PYTHONPATH"] = os.pathsep.join(sys.path)
+        print("sys.path")
+        print(sys.path)
+        print("pythonpath")
+        print(env["PYTHONPATH"])
 
     # Add the MORSE node name to env.
     if node_name:
